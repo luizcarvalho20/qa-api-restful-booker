@@ -1,0 +1,125 @@
+{
+  "info": {
+    "_postman_id": "0a1f7643-a60f-479c-bbec-eebb2fe00041",
+    "name": "Restful-Booker API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51056306",
+    "_collection_link": "https://go.postman.co/collection/51056306-0a1f7643-a60f-479c-bbec-eebb2fe00041?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Listar reservas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/booking",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "booking"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar reserva",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/booking/17",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "booking",
+            "17"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Gerar token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"password123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Criar reserva",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code deve ser 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Resposta deve conter bookingid\", function () {\r",
+              "    const response = pm.response.json();\r",
+              "    pm.expect(response).to.have.property(\"bookingid\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Resposta deve conter firstname correto\", function () {\r",
+              "    const response = pm.response.json();\r",
+              "    pm.expect(response.booking.firstname).to.eql(\"Luiz\");\r",
+              "});\r",
+              "    const response = pm.response.json();\r",
+              "    pm.environment.set(\"bookingId\", response.bookingid);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"firstname\": \"Luiz\",\r\n  \"lastname\": \"Carvalho\",\r\n  \"totalprice\": 1500,\r\n  \"depositpaid\": true,\r\n  \"bookingdates\": {\r\n    \"checkin\": \"2026-03-18\",\r\n    \"checkout\": \"2026-03-20\"\r\n  },\r\n  \"additionalneeds\": \"Breakfast\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/booking",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "booking"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

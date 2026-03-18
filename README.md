@@ -1,7 +1,7 @@
 # QA API - Restful Booker
 
 ## Sobre o projeto
-Projeto prático de testes de API utilizando Postman com a API Restful-Booker, desenvolvido como parte de um plano de 21 dias para construção de portfólio em QA.
+Projeto prático de testes de API utilizando Postman com a API Restful-Booker, desenvolvido para construção de portfólio em QA.
 
 ## Objetivos
 - Praticar testes manuais de API

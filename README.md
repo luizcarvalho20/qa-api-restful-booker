@@ -1,11 +1,9 @@
 # QA API - Restful Booker
 
 ## Sobre o projeto
-<<<<<<< HEAD
 Projeto prático de testes de API utilizando Postman com a API Restful Booker, com foco em validação manual de endpoints REST, status codes, estrutura de payloads, autenticação e uso de variáveis de ambiente.
 =======
 Projeto prático de testes de API utilizando Postman com a API Restful-Booker, desenvolvido para construção de portfólio em QA.
->>>>>>> cccbec857a06d84775abe96edfbece0bb026f80c
 
 ## Objetivos
 - Praticar testes manuais de API

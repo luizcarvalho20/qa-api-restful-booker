@@ -1,7 +1,7 @@
 # Exploração Inicial da API - Restful Booker
 
 ## Objetivo
-Realizar o primeiro contato com a API Restful-Booker para entender sua estrutura, principais endpoints, comportamento das requisições e respostas, autenticação e possibilidades de testes manuais e futuros testes automatizados.
+Realizar a exploração inicial da API Restful Booker para entender sua estrutura, principais endpoints, comportamento das requisições e respostas, autenticação, uso de variáveis de ambiente e oportunidades de evolução para testes automatizados.
 
 ## Base URL
 `https://restful-booker.herokuapp.com`
@@ -17,12 +17,29 @@ Realizar o primeiro contato com a API Restful-Booker para entender sua estrutura
 
 ## Variáveis utilizadas
 - `baseUrl = https://restful-booker.herokuapp.com`
+- `bookingId = ID da reserva criada dinamicamente`
+- `token = token gerado dinamicamente`
 
 ---
 
 ## Endpoints explorados
 
-### 1. GET /booking
+### 1. GET /ping
+**Objetivo:** validar disponibilidade da API.
+
+- **Método:** GET
+- **URL:** `{{baseUrl}}/ping`
+- **Autenticação:** não
+- **Body:** não se aplica
+- **Status code esperado:** 201
+- **Resultado obtido:** 201 Created
+- **Observações:** endpoint utilizado para confirmar que a API está disponível para testes.
+
+**Conclusão:** endpoint funcionando corretamente para validação de disponibilidade.
+
+---
+
+### 2. GET /booking
 **Objetivo:** listar reservas cadastradas na aplicação.
 
 - **Método:** GET
@@ -37,28 +54,28 @@ Realizar o primeiro contato com a API Restful-Booker para entender sua estrutura
 
 ---
 
-### 2. GET /booking/{id}
+### 3. GET /booking/{id}
 **Objetivo:** buscar os detalhes de uma reserva específica.
 
 - **Método:** GET
-- **URL testada:** `{{baseUrl}}/booking/17`
+- **URL:** `{{baseUrl}}/booking/{{bookingId}}`
 - **Autenticação:** não
 - **Body:** não se aplica
 - **Status code esperado:** 200
 - **Resultado obtido:** 200 OK
 - **Observações:** a resposta retorna os dados completos da reserva, incluindo:
-  - firstname
-  - lastname
-  - totalprice
-  - depositpaid
-  - bookingdates
-  - additionalneeds
+  - `firstname`
+  - `lastname`
+  - `totalprice`
+  - `depositpaid`
+  - `bookingdates`
+  - `additionalneeds`
 
 **Conclusão:** endpoint funcionando corretamente para consulta detalhada de reserva específica.
 
 ---
 
-### 3. POST /auth
+### 4. POST /auth
 **Objetivo:** gerar token de autenticação para operações protegidas.
 
 - **Método:** POST
@@ -67,9 +84,9 @@ Realizar o primeiro contato com a API Restful-Booker para entender sua estrutura
 - **Body:** JSON com credenciais válidas
 - **Status code esperado:** 200
 - **Resultado obtido:** 200 OK
-- **Observações:** a resposta retorna um token de autenticação para uso em endpoints protegidos, como atualização e exclusão de reservas.
+- **Observações:** a resposta retorna um token de autenticação para uso em endpoints protegidos, como atualização e exclusão de reservas. O token foi armazenado automaticamente na variável de ambiente `token`.
 
-**Conclusão:** endpoint funcionando corretamente para geração de token.
+**Conclusão:** endpoint funcionando corretamente para geração e armazenamento de token.
 
 #### Exemplo de body utilizado
 ```json
@@ -79,9 +96,13 @@ Realizar o primeiro contato com a API Restful-Booker para entender sua estrutura
 }
 ```
 
+#### Testes adicionados no Postman
+- Status code deve ser 200
+- Resposta deve conter token
+
 ---
 
-### 4. POST /booking
+### 5. POST /booking
 **Objetivo:** criar uma nova reserva.
 
 - **Método:** POST
@@ -93,6 +114,8 @@ Realizar o primeiro contato com a API Restful-Booker para entender sua estrutura
 - **Observações:** a resposta retorna:
   - `bookingid`
   - objeto `booking` com os dados cadastrados
+
+Além disso, o `bookingid` retornado foi armazenado automaticamente na variável de ambiente `bookingId`, permitindo o reaproveitamento dinâmico em outras requisições.
 
 #### Exemplo de body utilizado
 ```json
@@ -140,9 +163,10 @@ Até o momento, a estrutura inicial do projeto contempla:
 - exploração manual da API
 - criação de collection no Postman
 - criação de environment no Postman
-- execução inicial de endpoints principais
+- execução dos endpoints principais
 - validação básica de respostas
-- primeiros testes automatizados no próprio Postman
+- criação de testes básicos no Postman
+- armazenamento automático de dados dinâmicos em variáveis de ambiente
 
 ---
 
@@ -165,13 +189,13 @@ Nas próximas etapas do projeto, os testes deverão evoluir para:
 - testes de autenticação
 - testes de PUT, PATCH e DELETE
 - cenários positivos e negativos
-- uso de variáveis de ambiente
-- automação de execuções com Collection Runner
-- exportação da collection e environment
+- ampliação dos testes automatizados no Postman
+- execução com Collection Runner
+- exportação e versionamento da collection e environment
 - execução via Newman
 - integração futura com CI
 
 ---
 
 ## Conclusão
-A exploração inicial da API Restful-Booker foi concluída com sucesso. Os principais endpoints de consulta, autenticação e criação de reserva foram executados corretamente no Postman. Também foi possível identificar um erro inicial de configuração no endpoint de criação, que foi corrigido durante a execução. Com isso, a base do projeto de testes de API foi montada com sucesso para continuidade nos próximos dias.
+A exploração inicial da API Restful Booker foi concluída com sucesso. Os principais endpoints de disponibilidade, consulta, autenticação e criação de reserva foram executados corretamente no Postman. Também foi possível identificar e corrigir um erro de configuração no endpoint de criação de reserva. Com isso, a base inicial do projeto foi estruturada com collection, environment, testes básicos e reaproveitamento de variáveis dinâmicas, preparando o repositório para as próximas etapas de evolução dos testes de API.

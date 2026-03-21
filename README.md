@@ -89,13 +89,24 @@ Restful Booker
 - `docs/cobertura-crud-auth.md` → documentação da cobertura CRUD autenticada com criação, consulta, atualização e exclusão de reservas
 
 ## Evidências
-- `evidencias/EV-API-001-testes-iniciais-criar-reserva.png` → evidência da validação inicial do endpoint de criação de reserva
-- `evidencias/EV-API-002-validacao-get-booking-by-id.png` → evidência da execução e validação do endpoint `GET /booking/:id`
-- `evidencias/EV-API-003-validacao-post-create-booking.png` → evidência da execução e validação do endpoint `POST /booking`
-- `evidencias/EV-API-004-validacao-get-booking-inexistente-404.png` → evidência do cenário de erro para recurso inexistente
-- `evidencias/EV-API-005-runner-validacoes-resumo.png` → evidência do resumo geral das execuções no Collection Runner
-- `evidencias/EV-API-006-runner-crud-auth-sucesso.png` → evidência da execução completa da collection com cobertura CRUD + Auth e todos os testes aprovados
 
+### Testes iniciais
+- `evidencias/testes iniciais/EV-API-001-testes-iniciais-criar-reserva.png` → evidência da validação inicial do endpoint de criação de reserva
+- `evidencias/testes iniciais/EV-API-001-validacao-get-booking-by-id-sucesso.png` → evidência da execução e validação do endpoint `GET /booking/:id`
+- `evidencias/testes iniciais/EV-API-002-validacao-post-create-booking-sucesso.png` → evidência da execução e validação do endpoint `POST /booking`
+- `evidencias/testes iniciais/EV-API-003-validacao-get-booking-inexistente-erro-404.png` → evidência do cenário de erro para recurso inexistente
+- `evidencias/testes iniciais/EV-API-004-runner-validacoes-resumo-execucao.png` → evidência do resumo geral das execuções iniciais no Collection Runner
+
+### CRUD + Auth
+- `evidencias/CRUD-AUTH/EV-API-001-create-token.png` → evidência da geração de token de autenticação
+- `evidencias/CRUD-AUTH/EV-API-002-create-booking.png` → evidência da criação de reserva
+- `evidencias/CRUD-AUTH/EV-API-003-get-booking-by-id.png` → evidência da consulta de reserva por ID
+- `evidencias/CRUD-AUTH/EV-API-004-update-booking.png` → evidência da atualização completa de reserva com `PUT`
+- `evidencias/CRUD-AUTH/EV-API-005-partial-update-booking.png` → evidência da atualização parcial de reserva com `PATCH`
+- `evidencias/CRUD-AUTH/EV-API-006-delete-booking.png` → evidência da exclusão de reserva com `DELETE`
+- `evidencias/CRUD-AUTH/EV-API-007-delete-booking-confirm.png` → evidência da validação de inexistência do recurso após exclusão
+- `evidencias/CRUD-AUTH/EV-API-008-runner-execucao.png` → evidência da execução completa da collection com cobertura CRUD + Auth e todos os testes aprovados
+- 
 ## Aprendizados
 Durante a execução deste projeto, foi possível praticar:
 - estrutura de requisições REST

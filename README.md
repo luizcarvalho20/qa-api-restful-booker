@@ -106,7 +106,7 @@ Restful Booker
 - `evidencias/CRUD-AUTH/EV-API-006-delete-booking.png` → evidência da exclusão de reserva com `DELETE`
 - `evidencias/CRUD-AUTH/EV-API-007-delete-booking-confirm.png` → evidência da validação de inexistência do recurso após exclusão
 - `evidencias/CRUD-AUTH/EV-API-008-runner-execucao.png` → evidência da execução completa da collection com cobertura CRUD + Auth e todos os testes aprovados
-- 
+  
 ## Aprendizados
 Durante a execução deste projeto, foi possível praticar:
 - estrutura de requisições REST

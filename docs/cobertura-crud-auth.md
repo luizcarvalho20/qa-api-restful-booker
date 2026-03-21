@@ -31,4 +31,6 @@ Validar o fluxo completo de operações autenticadas na API Restful Booker, cobr
 Execução completa da collection com todos os testes aprovados no Runner.
 
 ## Evidências
-Adicionar prints do Postman Runner e respostas dos endpoints testados.
+```
+/evidencias/CRUD-AUTH/EV-API-008-runner-execucao.png
+```

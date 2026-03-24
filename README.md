@@ -1,7 +1,10 @@
 # QA API - Restful Booker
 
+## Resumo
+Projeto prático de testes de API com **Postman** e **Newman**, cobrindo autenticação, fluxo CRUD completo, validações de resposta, uso de variáveis de ambiente, scripts em JavaScript no Postman e execução automatizada da collection via terminal.
+
 ## Sobre o projeto
-Projeto prático de testes de API utilizando Postman com a API Restful Booker, com foco em exploração de endpoints REST, validação manual de respostas, autenticação, uso de variáveis de ambiente, criação de testes com scripts no Postman e execução da collection via Newman.
+Este projeto foi desenvolvido com foco na prática de testes de API REST utilizando a API pública **Restful Booker**. O objetivo foi explorar endpoints, validar respostas, estruturar cenários positivos e negativos, automatizar verificações com scripts no Postman e executar a collection de forma sequencial com o Newman.
 
 ## Objetivos
 - Praticar testes manuais de API
@@ -28,7 +31,7 @@ Projeto prático de testes de API utilizando Postman com a API Restful Booker, c
 - `postman/environment/` → environment exportado do Postman
 
 ## API utilizada
-Restful Booker
+A API pública utilizada neste projeto foi a **Restful Booker**, voltada para simulação de operações de reservas e amplamente usada para prática de testes de API REST.
 
 ## Escopo do projeto
 - Criação da collection no Postman
@@ -62,7 +65,7 @@ Restful Booker
 - Exclusão de reserva com `DELETE`
 - Validação de inexistência do recurso após exclusão
 - Validação de status code
-- Validação de Content-Type
+- Validação de `Content-Type`
 - Validação de presença de `bookingid`
 - Validação de campos obrigatórios da resposta
 - Validação de tipos de dados
@@ -72,7 +75,7 @@ Restful Booker
 - Armazenamento automático de `bookingid` no environment
 - Execução da collection via Newman com assertions no terminal
 
-## Fluxo CRUD validado
+## Fluxo principal validado
 - `Create Token`
 - `Create Booking`
 - `Buscar reserva`
@@ -90,37 +93,24 @@ Restful Booker
 - `token`
 
 ## Documentação disponível
-- `docs/exploracao-inicial-api.md` → documentação da exploração inicial dos endpoints
-- `docs/validacoes-de-resposta.md` → documentação das validações de resposta, incluindo estrutura JSON, campos obrigatórios, tipos e cenário de erro
-- `docs/cobertura-crud-auth.md` → documentação da cobertura CRUD autenticada com criação, consulta, atualização e exclusão de reservas
-- `docs/automacao-postman.md` → documentação da automação inicial da collection no Postman
-- `docs/automacao-newman.md` → documentação da execução da collection via Newman
+- `docs/exploracao-inicial-api.md` → exploração inicial dos endpoints
+- `docs/validacoes-de-resposta.md` → validações de resposta, estrutura JSON, campos obrigatórios, tipos e cenário de erro
+- `docs/cobertura-crud-auth.md` → cobertura CRUD autenticada com criação, consulta, atualização e exclusão de reservas
+- `docs/automacao-postman.md` → automação inicial da collection no Postman
+- `docs/automacao-newman.md` → execução da collection via Newman
 
 ## Evidências
+As evidências do projeto estão organizadas por etapa de execução:
 
-### Testes iniciais
-- `evidencias/testes iniciais/EV-API-001-testes-iniciais-criar-reserva.png` → evidência da validação inicial do endpoint de criação de reserva
-- `evidencias/testes iniciais/EV-API-001-validacao-get-booking-by-id-sucesso.png` → evidência da execução e validação do endpoint `GET /booking/:id`
-- `evidencias/testes iniciais/EV-API-002-validacao-post-create-booking-sucesso.png` → evidência da execução e validação do endpoint `POST /booking`
-- `evidencias/testes iniciais/EV-API-003-validacao-get-booking-inexistente-erro-404.png` → evidência do cenário de erro para recurso inexistente
-- `evidencias/testes iniciais/EV-API-004-runner-validacoes-resumo-execucao.png` → evidência do resumo geral das execuções iniciais no Collection Runner
-
-### CRUD + Auth
-- `evidencias/CRUD-AUTH/EV-API-001-create-token.png` → evidência da geração de token de autenticação
-- `evidencias/CRUD-AUTH/EV-API-002-create-booking.png` → evidência da criação de reserva
-- `evidencias/CRUD-AUTH/EV-API-003-get-booking-by-id.png` → evidência da consulta de reserva por ID
-- `evidencias/CRUD-AUTH/EV-API-004-update-booking.png` → evidência da atualização completa de reserva com `PUT`
-- `evidencias/CRUD-AUTH/EV-API-005-partial-update-booking.png` → evidência da atualização parcial de reserva com `PATCH`
-- `evidencias/CRUD-AUTH/EV-API-006-delete-booking.png` → evidência da exclusão de reserva com `DELETE`
-- `evidencias/CRUD-AUTH/EV-API-007-delete-booking-confirm.png` → evidência da validação de inexistência do recurso após exclusão
-- `evidencias/CRUD-AUTH/EV-API-008-runner-execucao.png` → evidência da execução completa da collection com cobertura CRUD + Auth e todos os testes aprovados
-
-### Newman
-- `evidencias/NEWMAN/EV-API-001-execucao-teste-newman-sucesso.png` → evidência da execução da collection com sucesso via Newman no terminal
-- `evidencias/NEWMAN/resultado-newman-terminal.txt` → registro textual da execução da collection via Newman
+- `evidencias/testes iniciais/` → exploração inicial e validações básicas
+- `evidencias/CRUD-AUTH/` → fluxo CRUD autenticado
+- `evidencias/NEWMAN/` → execução da collection via terminal com Newman
+- `evidencias/TESTES AUTOMATIZADOS/` → registros visuais dos testes automatizados
 
 ## Aprendizados
-Durante a execução deste projeto, foi possível praticar:
+Este projeto permitiu consolidar fundamentos importantes de testes de API, como manipulação de variáveis de ambiente, autenticação por token, validação de payloads JSON, encadeamento de requisições dependentes e execução automatizada da collection via Newman.
+
+Durante a execução do projeto, foi possível praticar:
 - estrutura de requisições REST
 - uso de variáveis de ambiente no Postman
 - envio de body em formato JSON
@@ -170,24 +160,9 @@ Após os ajustes, a collection passou a executar com sucesso tanto no Collection
 newman run ".\postman\collection\Restful-Booker API.postman_collection.json" -e ".\postman\environment\Restful-Booker - Dev.postman_environment.json"
 ```
 
-### Fluxo principal validado
-- `Create Token`
-- `Create Booking`
-- `Buscar reserva`
-- `Get Booking by ID - Sucesso`
-- `Update Booking`
-- `Partial Update Booking`
-- `Delete Booking`
-- `Get Booking by ID - Após Delete`
-- `Create Booking - Validacao`
-- `Booking Inexistente - Erro`
-
 ## Próximos passos
-- Adicionar mais cenários negativos para autenticação e atualização
-- Ampliar a cobertura de validações automatizadas no Postman
 - Gerar relatório HTML com Newman
 - Integrar futuramente a execução com CI
-- Evoluir o projeto para uma abordagem mais próxima de testes automatizados de API
 
 ## Autor
 Luiz Felipe Carvalho
